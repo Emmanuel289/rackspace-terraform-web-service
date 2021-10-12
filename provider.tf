@@ -9,8 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region                  = "ca-central-1"
-  profile                 = "rackspace"
+  region = "us-east-1"
 }
 
 
