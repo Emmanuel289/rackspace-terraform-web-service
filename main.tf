@@ -1,4 +1,4 @@
-# Registry module which creates AWS VPC resources
+# Registry module which creates VPC resources on AWS
 # https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest
 
 module "vpc" {
@@ -7,17 +7,14 @@ module "vpc" {
   name = "${var.name}-vpc"
   cidr = var.cidr-block
 
-  azs             = var.availability_zones
+  azs             = var.vpc_azs
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
 
   enable_nat_gateway = true
   enable_vpn_gateway = false
 
-  tags = {
-    Rackspace   = "true"
-    Environment = "dev"
-  }
+  tags = var.tags
 }
 
 # EC2 key-pair
