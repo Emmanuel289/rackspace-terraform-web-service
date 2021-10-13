@@ -10,16 +10,14 @@ variable "name" {
   description = "Name of Project"
   type        = string
 
-  default = "rackspace"
+  default = "rackspace-assessment"
 
 }
 
-variable "availability_zones" {
-  description = "List of availability zones"
+variable "vpc_azs" {
+  description = "Availability zones for VPC"
   type        = list(string)
-
-  default = ["us-east-1a", "us-east-1b", "us-east-1c"]
-
+  default     = ["us-west-2a", "us-west-2b", "us-west-2c"]
 }
 
 variable "private_subnets" {
@@ -37,7 +35,7 @@ variable "public_subnets" {
 }
 
 variable "ami" {
-  description = "AMI used in creating EC2 instances"
+  description = "AMI used for creating EC2 instances"
   type        = string
   default     = "ami-02e136e904f3da870"
 
@@ -49,4 +47,14 @@ variable "ami" {
 variable "key" {
     type        = string
     description = "ssh key."
+}
+
+
+variable "tags" {
+  description = "Tags to apply to resources in project"
+  type        = map(string)
+  default = {
+    Rackspace   = "true"
+    Environment = "dev"
+  }
 }
