@@ -1,4 +1,4 @@
-# Rackspace-terraform-web-service
+# rackspace-terraform-web-service
 This repository contains submissions for Approach 1 Using Terraform and scripting.
 
 # Setup
