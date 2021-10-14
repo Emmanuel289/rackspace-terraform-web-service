@@ -6,8 +6,8 @@ This repository contains my submission for Approach 1. The implementation launch
 - Open a terminal and navigate to the root directory. Run the following commands and enter "yes" to approve the actions after confirming the deployment plan.
 ```
 terraform init   #  Updates the terraform modules and required providers
-terraform plan  # Optional: run terraform plan -out <design.plan> to save the deployment plan to an output file named <design-plan>
-terraform apply # Apply the actions in the plan
+terraform plan  #   Optional: run terraform plan -out <design.plan> to save the deployment plan to an output file named <design-plan>
+terraform apply #   Apply the actions in the plan
 ```
 
 # Components
