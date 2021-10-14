@@ -9,11 +9,12 @@ resource "aws_launch_template" "dev_web" {
   image_id      = "ami-0a70476e631caa6d3"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.dev_web.key_name
-  network_interfaces {
-    associate_public_ip_address = true
-    delete_on_termination       = true
-    security_groups             = [aws_security_group.ec2_sg.id]
-  }
+  vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  # network_interfaces {
+  #   associate_public_ip_address = true
+  #   delete_on_termination       = true
+  #   security_groups             = [aws_security_group.ec2_sg.id]
+  # }
 
   lifecycle {
     create_before_destroy = true
@@ -93,7 +94,7 @@ resource "aws_autoscaling_policy" "scale_down" {
 
 resource "aws_elb" "dev_web" {
   name            = "${var.name}-elb"
-  subnets         = module.vpc.public_subnets
+  subnets         = module.vpc.private_subnets
   security_groups = [aws_security_group.lb_sg.id]
 
   listener {
