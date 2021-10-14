@@ -1,4 +1,4 @@
-# Cloud watch metric alarm for scaling up
+# Alarm for scaling up
 resource "aws_cloudwatch_metric_alarm" "scale_up" {
   alarm_name          = "${var.name}-scaleup"
   comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -7,7 +7,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_up" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "50"
+  threshold           = "75"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.dev_web.id
@@ -18,7 +18,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_up" {
 }
 
 
-# Cloud watch metric alarm for scaling down
+# Alarm for scaling down
 resource "aws_cloudwatch_metric_alarm" "scale_down" {
   alarm_name          = "${var.name}-scaledown"
   comparison_operator = "LessThanOrEqualToThreshold"
@@ -27,7 +27,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_down" {
   namespace           = "AWS/EC2"
   period              = "120"
   statistic           = "Average"
-  threshold           = "50"
+  threshold           = "75"
 
   dimensions = {
     AutoScalingGroupName = aws_autoscaling_group.dev_web.id
