@@ -1,17 +1,20 @@
 #!/bin/bash
+
+# Update packages and install lamp stack
 sudo yum update -y
 sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
-sudo yum install -y httpd mariadb-server
+
+# Install the Apache web server and start the web service.
+sudo yum install -y httpd
 sudo systemctl start httpd
 sudo systemctl enable httpd
-sudo chkconfig httpd on
-# Set file permissions for the Apache web server
-sudo groupadd www
-sudo usermod -a -G www ec2-user
-sudo chgrp -R www /var/www
+
+# Set file permissions for web server
+sudo usermod -a -G apache ec2-user
+sudo chown -R ec2-user:apache /var/www
 sudo chmod 2775 /var/www
 find /var/www -type d -exec sudo chmod 2775 {} +
 find /var/www -type f -exec sudo chmod 0664 {} +
-# Create a new PHP file at  /var/www/html/ path
-echo "<? echo "<h1>Welcome to system('hostname'</h1>" ?>" > /var/www/html/phpinfo.php
 
+# Create an index.html file with a welcome message and hostname at /var/www/html/ path
+echo "Hello World from $(hostname -f)" > /var/www/html/index.html
