@@ -10,6 +10,7 @@ module "vpc" {
   private_subnets      = var.private_subnets
   public_subnets       = var.public_subnets
   enable_dns_hostnames = true
+  enable_nat_gateway   = true
   tags                 = var.tags
 }
 
