@@ -4,11 +4,12 @@ Assessment for Amazon Web Services.
 
 # Setup
 
-Clone the repository and run the following commands. Enter yes when prompted at each stage
-
-``` terraform init   #  Updates the terraform modules and required providers
-    terraform plan  # Optional: run terraform plan -out <design.plan> to save the deployment plan to an output file named <design-plan>
-    terraform apply # Apply the actions in the plan
+- Clone the repository https://github.com/Emmanuel289/rackspace-terraform-web-service.git.
+- Open a terminal and navigate to the root directory. Run the following commands and enter "yes" after inspecting and confirming the deployment plan.
+``` 
+terraform init   #  Updates the terraform modules and required providers
+terraform plan  # Optional: run terraform plan -out <design.plan> to save the deployment plan to an output file named <design-plan>
+terraform apply # Apply the actions in the plan
 ```
 
 # Network Architecture
